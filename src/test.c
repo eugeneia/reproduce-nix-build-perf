@@ -29,6 +29,7 @@ void freep (struct freelist *fl, void *p) {
 struct link {
     void *packets[1024];
     unsigned int read, write;
+    // These need to be pointers (to chase) to reproduce the perf difference
     uint64_t* rxpackets;
     uint64_t* txpackets;
 };
