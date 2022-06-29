@@ -5,6 +5,21 @@ Linux spare-NFG2 5.10.0-9-amd64 #1 SMP Debian 5.10.70-1 (2021-09-30) x86_64 GNU/
 AMD EPYC 7443P 24-Core Processor
 iommu=off nosmt isolcpus=6-23
 
+$ numactl -H
+available: 1 nodes (0)
+node 0 cpus: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23
+node 0 size: 128756 MB
+node 0 free: 24645 MB
+node distances:
+node   0
+  0:  10
+
+max@spare-NFG2:~/test-nix$ cat /sys/devices/system/cpu/cpu23/cpufreq/scaling_governor
+performance
+
+max@spare-NFG2:~/test-nix$ nix --version
+nix (Nix) 2.9.1
+
 $ cat /etc/nix/nix.conf
 build-users-group = nixbld
 

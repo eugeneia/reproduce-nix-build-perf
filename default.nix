@@ -25,7 +25,7 @@ stdenv.mkDerivation rec {
     cp bin/test $out/bin
 
     export PERF="/usr/bin/perf_5.10 stat -d"
-    export CPU="numactl -N 1 -m 1 taskset -c 23"
+    export CPU="numactl -N 0 -m 0 taskset -c 23"
 
     echo $PERF $CPU $out/bin/test 
     $PERF $CPU $out/bin/test
