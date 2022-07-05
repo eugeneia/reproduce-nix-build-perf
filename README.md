@@ -31,12 +31,11 @@ max-jobs = 1
 To reproduce:
 
 ```
-max@spare-NFG2:~/test-nix$ nix-build
 this derivation will be built:
-  /nix/store/jdgwibw2vm2sagb7admjab9k4ckdji9h-test-dev.drv
-building '/nix/store/jdgwibw2vm2sagb7admjab9k4ckdji9h-test-dev.drv'...
+  /nix/store/s1z1zba6frxqpcr5k0grpv4rirl3d4gd-test-dev.drv
+building '/nix/store/s1z1zba6frxqpcr5k0grpv4rirl3d4gd-test-dev.drv'...
 unpacking sources
-unpacking source archive /nix/store/j72l1yg9zxc9fphxa6sglh3q2bfzxkap-source
+unpacking source archive /nix/store/cd3xxs5xzsdsch74nikfyz0dh4050rk0-source
 source root is source
 patching sources
 patching script interpreter paths in .
@@ -44,66 +43,68 @@ configuring
 no configure script, doing nothing
 building
 build flags: -j24 -l24 SHELL=/nix/store/qhvvivdi9pkvfpv7130sa71kpslkjv6f-bash-5.1-p16/bin/bash
-make: Nothing to be done for 'all'.
+gcc -o bin/test src/test.c
 installing
-/usr/bin/perf_5.10 stat -d numactl -N 1 -m 1 taskset -c 23 /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev/bin/test
+/usr/bin/perf_5.10 stat -d numactl -N 0 -m 0 taskset -c 23 /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev/bin/test
+Received 1000000000 packets (fl.nfree=100000)
 
- Performance counter stats for 'numactl -N 1 -m 1 taskset -c 23 /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev/bin/test':
+ Performance counter stats for 'numactl -N 0 -m 0 taskset -c 23 /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev/bin/test':
 
-           3197.22 msec task-clock                #    1.000 CPUs utilized
-                 4      context-switches          #    0.001 K/sec
-                 2      cpu-migrations            #    0.001 K/sec
-               186      page-faults               #    0.058 K/sec
-       12854618407      cycles                    #    4.021 GHz                      (62.47%)
-           1490854      stalled-cycles-frontend   #    0.01% frontend cycles idle     (62.47%)
-           1985007      stalled-cycles-backend    #    0.02% backend cycles idle      (62.47%)
-       10959032621      instructions              #    0.85  insn per cycle
-                                                  #    0.00  stalled cycles per insn  (62.47%)
-        1212439369      branches                  #  379.217 M/sec                    (62.58%)
-           2161160      branch-misses             #    0.18% of all branches          (62.55%)
-        4831905182      L1-dcache-loads           # 1511.284 M/sec                    (62.55%)
-             79458      L1-dcache-load-misses     #    0.00% of all L1-dcache accesses  (62.44%)
+          13201.44 msec task-clock                #    1.000 CPUs utilized
+                10      context-switches          #    0.001 K/sec
+                 1      cpu-migrations            #    0.000 K/sec
+            100371      page-faults               #    0.008 M/sec
+       37572440311      cycles                    #    2.846 GHz                      (74.97%)
+           6365381      stalled-cycles-frontend   #    0.02% frontend cycles idle     (74.97%)
+          34128909      stalled-cycles-backend    #    0.09% backend cycles idle      (74.99%)
+       50844206590      instructions              #    1.35  insn per cycle
+                                                  #    0.00  stalled cycles per insn  (75.02%)
+       12170473234      branches                  #  921.905 M/sec                    (75.03%)
+          20391818      branch-misses             #    0.17% of all branches          (75.03%)
+       18659831088      L1-dcache-loads           # 1413.470 M/sec                    (75.01%)
+           9592496      L1-dcache-load-misses     #    0.05% of all L1-dcache accesses  (74.98%)
    <not supported>      LLC-loads
    <not supported>      LLC-load-misses
 
-       3.197729858 seconds time elapsed
+      13.201778077 seconds time elapsed
 
-       3.197727000 seconds user
-       0.000000000 seconds sys
+      13.093873000 seconds user
+       0.108015000 seconds sys
 
 
 post-installation fixup
-shrinking RPATHs of ELF executables and libraries in /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev
-shrinking /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev/bin/test
+shrinking RPATHs of ELF executables and libraries in /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev
+shrinking /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev/bin/test
 strip is /nix/store/0ldkj6mklr9r8fml6927akjdl3zih46m-gcc-wrapper-11.3.0/bin/strip
-stripping (with command strip and flags -S) in /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev/bin
-patching script interpreter paths in /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev
-checking for references to /tmp/nix-build-test-dev.drv-0/ in /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev...
-/nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev
+stripping (with command strip and flags -S) in /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev/bin
+patching script interpreter paths in /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev
+checking for references to /tmp/nix-build-test-dev.drv-0/ in /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev...
+/nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev
 
 
-max@spare-NFG2:~/test-nix$ /usr/bin/perf_5.10 stat -d numactl -N 1 -m 1 taskset -c 23 /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev/bin/test
+max@spare-NFG2:~/test-nix$ /usr/bin/perf_5.10 stat -d numactl -N 0 -m 0 taskset -c 23 /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev/bin/test
+Received 1000000000 packets (fl.nfree=100000)
 
- Performance counter stats for 'numactl -N 1 -m 1 taskset -c 23 /nix/store/bpfpxzykmsyh6xifmh5sdw5h50ix1nwv-test-dev/bin/test':
+ Performance counter stats for 'numactl -N 0 -m 0 taskset -c 23 /nix/store/g9vw7nyhc8lr71y0m4xpk7rzis5ck4lm-test-dev/bin/test':
 
-            988.02 msec task-clock                #    1.000 CPUs utilized
-                 3      context-switches          #    0.003 K/sec
-                 2      cpu-migrations            #    0.002 K/sec
-               204      page-faults               #    0.206 K/sec
-     3,971,337,598      cycles                    #    4.019 GHz                      (62.35%)
-         8,384,869      stalled-cycles-frontend   #    0.21% frontend cycles idle     (62.35%)
-           892,315      stalled-cycles-backend    #    0.02% backend cycles idle      (62.35%)
-    10,948,864,071      instructions              #    2.76  insn per cycle
-                                                  #    0.00  stalled cycles per insn  (62.42%)
-     1,211,041,796      branches                  # 1225.721 M/sec                    (62.83%)
-         2,437,029      branch-misses             #    0.20% of all branches          (62.75%)
-     3,456,869,149      L1-dcache-loads           # 3498.771 M/sec                    (62.67%)
-            25,870      L1-dcache-load-misses     #    0.00% of all L1-dcache accesses  (62.27%)
+          8,791.20 msec task-clock                #    1.000 CPUs utilized
+                 7      context-switches          #    0.001 K/sec
+                 1      cpu-migrations            #    0.000 K/sec
+           100,379      page-faults               #    0.011 M/sec
+    25,021,009,956      cycles                    #    2.846 GHz                      (74.97%)
+        26,505,012      stalled-cycles-frontend   #    0.11% frontend cycles idle     (74.97%)
+        23,495,224      stalled-cycles-backend    #    0.09% backend cycles idle      (74.97%)
+    50,791,659,395      instructions              #    2.03  insn per cycle
+                                                  #    0.00  stalled cycles per insn  (74.98%)
+    12,165,866,411      branches                  # 1383.868 M/sec                    (75.02%)
+        22,094,280      branch-misses             #    0.18% of all branches          (75.07%)
+    16,607,300,112      L1-dcache-loads           # 1889.082 M/sec                    (75.03%)
+        10,273,281      L1-dcache-load-misses     #    0.06% of all L1-dcache accesses  (74.98%)
    <not supported>      LLC-loads
    <not supported>      LLC-load-misses
 
-       0.988476052 seconds time elapsed
+       8.791589560 seconds time elapsed
 
-       0.988478000 seconds user
-       0.000000000 seconds sys
+       8.711693000 seconds user
+       0.079997000 seconds sys
 ```
